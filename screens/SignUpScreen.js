@@ -7,6 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import firebase from '../components/firebase.js';
 
 const SignUpScreen = ({navigation}) => {
 
@@ -20,6 +21,13 @@ const SignUpScreen = ({navigation}) => {
         isValidUser: true,
         isValidPassword: true,
     });
+
+    const handleEmailChange= (val) =>{
+      setData({
+        ...data,
+        email: val
+      });
+    }
 
     const handlePasswordChange= (val) =>{
       setData({
@@ -50,6 +58,14 @@ const SignUpScreen = ({navigation}) => {
         confirm_secureTextEntry: !data.confirm_secureTextEntry
       });
     }
+    
+    const signUpHandle = (email, password, confirmpassword)=>{
+      if(password===confirmpassword)
+      {
+        firebase.auth().createUserWithEmailAndPassword(email,password)
+        .catch(()=>{console.log('signup failed')});
+      }
+    }
 
   return (
     <View style={styles.container}>
@@ -68,6 +84,7 @@ const SignUpScreen = ({navigation}) => {
           placeholder= "Enter your email"
           style={styles.textInput} 
           autoCapitalize='none'
+          onChangeText={(val) => handleEmailChange(val)} 
         />
       </View>
 
@@ -143,7 +160,7 @@ const SignUpScreen = ({navigation}) => {
       <View style={styles.button}>
                 <TouchableOpacity
                     style={styles.signIn}
-                    onPress={() => {}}
+                   onPress={() => {signUpHandle( data.email, data.password, data.confirmpassword )}}
                 >
                 <LinearGradient
                     colors={['#bbe1fa', '#40a8c4']}
