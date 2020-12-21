@@ -63,6 +63,7 @@ const SignUpScreen = ({navigation}) => {
       if(password===confirmpassword)
       {
         firebase.auth().createUserWithEmailAndPassword(email,password)
+        .then(()=>{console.log('signup successful')})
         .catch(()=>{console.log('signup failed')});
       }
     }
