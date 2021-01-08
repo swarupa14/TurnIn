@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState,useEffect} from 'react';
 import firebase from './components/firebase.js';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -16,7 +16,7 @@ import auth from '@react-native-firebase/auth';
 const Drawer = createDrawerNavigator();
 
 const App = ()=> {
- /* const [initializing, setInitializing] = React.useState(true);
+  const [initializing, setInitializing] = React.useState(true);
   const [user, setUser] = React.useState();
   
   function onAuthStateChanged(user) {
@@ -24,11 +24,11 @@ const App = ()=> {
     if (initializing) setInitializing(false);
   }
   useEffect(() => {
-    setTimeout(() => {
-      setInitializing(false);
-    }, 1000);
-  }, []);*/
-
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+  if (initializing) return null;
+  console.log(' ',user);
   return (
    <NavigationContainer>
    <RootStackScreen/>
