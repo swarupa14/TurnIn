@@ -16,7 +16,7 @@ import auth from '@react-native-firebase/auth';
 const Drawer = createDrawerNavigator();
 
 const App = ()=> {
-  const [initializing, setInitializing] = React.useState(true);
+  /*const [initializing, setInitializing] = React.useState(true);
   const [user, setUser] = React.useState();
   
   function onAuthStateChanged(user) {
@@ -28,7 +28,7 @@ const App = ()=> {
     return subscriber; // unsubscribe on unmount
   }, []);
   if (initializing) return null;
-  console.log(' ',user);
+  console.log(' ',user);*/
   return (
    <NavigationContainer>
    <RootStackScreen/>
