@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState,useEffect} from 'react';
+
+import React, {Component, useState,useEffect} from 'react';
 import firebase from './components/firebase.js';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainTabScreen from './screens/MainTabScreen'
+import CardListScreen from './screens/CardListScreen'
 import BookmarkScreen from './screens/BookmarkScreen'
 import SettingsScreen from './screens/SettingsScreen'
 import SupportScreen from './screens/SupportScreen'
@@ -31,13 +33,14 @@ const App = ()=> {
   console.log(' ',user);*/
   return (
    <NavigationContainer>
-   <RootStackScreen/>
-   {/*<Drawer.Navigator drawerContent ={props => <DrawerContent {...props}/> }>
+   
+    <Drawer.Navigator drawerContent ={props => <DrawerContent {...props}/> }>
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
         <Drawer.Screen name="SupportScreen" component={SupportScreen} />
         <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
         <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
-      </Drawer.Navigator> */}
+        <Drawer.Screen name="CardListScreen" component={CardListScreen} />
+      </Drawer.Navigator> 
     </NavigationContainer>
   );
 }

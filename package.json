@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
-    "@react-native-firebase/app": "^10.3.0",
-    "@react-native-firebase/auth": "^10.3.1",
+    "@react-native-firebase/app": "^10.4.0",
+    "@react-native-firebase/auth": "^10.4.1",
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/material-bottom-tabs": "^5.3.10",
     "@react-navigation/material-top-tabs": "^5.3.10",
@@ -19,7 +19,8 @@
     "expo": "~40.0.0",
     "expo-linear-gradient": "~8.4.0",
     "expo-status-bar": "~1.0.3",
-    "firebase": "8.2.1",
+    "firebase": "^8.2.1",
+    "native-base": "^2.15.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
@@ -35,7 +36,21 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "~7.9.0",
+    "dotenv": "^8.2.0"
   },
-  "private": true
+  "private": true,
+  "name": "turnin",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swarupa14/TurnIn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swarupa14/TurnIn/issues"
+  },
+  "homepage": "https://github.com/swarupa14/TurnIn#readme",
+  "description": ""
 }

@@ -93,6 +93,17 @@ export function DrawerContent(props) {
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
+                                <Icon 
+                                name="cards-outline" 
+                                color={color}
+                                size={size}
+                                />
+                            )}
+                            label="cards"
+                            onPress={() => {props.navigation.navigate('CardListScreen')}}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
                                 <Ion 
                                 name="settings-outline" 
                                 color={color}
