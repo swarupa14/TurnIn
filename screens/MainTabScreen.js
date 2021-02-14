@@ -214,5 +214,13 @@ const ToDoStackScreen = ({ navigation }) => (
         ),
       }}
     />
+    <ToDoStack.Screen
+      name="Assign"
+      component={AssignScreen}
+      options={({ route }) => ({
+        title: route.params.AssignTitle,
+        headerBackTitleVisible: false,
+      })}
+    />
   </ToDoStack.Navigator>
 );
