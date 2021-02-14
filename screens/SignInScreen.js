@@ -44,8 +44,12 @@ const SignInScreen = ({navigation}) => {
 
     const loginHandle = (email, password)=>{
       firebase.auth().signInWithEmailAndPassword(email,password)
-      .then(()=>{console.log('signin successful')})
-      .catch(()=>{console.log('signin failed')});
+      .then(()=>{
+      navigation.navigate('MainTabScreen');
+      console.log('signin successful');
+    })
+      
+      .catch((e)=>{console.log(e)});
     }
 
   return (

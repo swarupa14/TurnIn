@@ -5,14 +5,19 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/Ionicons'
 import HomeScreen from './HomeScreen'
+import ClassScreen from "./ClassScreen";
 import DetailsScreen from './DetailsScreen'
-import ProfileScreen from './ProfileScreen'
+import ToDoScreen from './ToDoScreen'
 import ExploreScreen from "./ExploreScreen";
+import MessageScreen from "./MessageScreen";
+import ChatScreen from "./ChatScreen";
 
 
 const Tab = createMaterialBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
+const MessageStack = createStackNavigator();
+const ToDoStack = createStackNavigator();
 
 const MainTabScreen = ()=> (
     <Tab.Navigator
@@ -31,13 +36,13 @@ const MainTabScreen = ()=> (
         }}
       />
       <Tab.Screen
-        name="Explore"
-        component={ExploreScreen}
+        name="Message"
+        component={MessageStackScreen}
         options={{
-          tabBarLabel: 'Explore',
+          tabBarLabel: 'Inbox',
           tabBarColor: '#a8d7d7',
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="explore" color={color} size={24} />
+            <MaterialIcons name="chat" color={color} size={24} />
           ),
         }}
       />
@@ -45,7 +50,7 @@ const MainTabScreen = ()=> (
         name="Notifications"
         component={DetailsStackScreen}
         options={{
-          tabBarLabel: 'Updates',
+          tabBarLabel: 'Notifications',
           tabBarColor: '#a8d7d7',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="bell" color={color} size={24} />
@@ -53,13 +58,13 @@ const MainTabScreen = ()=> (
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="To-Do-List"
+        component={ToDoStackScreen}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: 'To-Do-List',
           tabBarColor: '#a8d7d7',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-circle" color={color} size={24} />
+            <MaterialCommunityIcons name="clipboard-list-outline" color={color} size={24} />
           ),
         }}
       />
@@ -79,7 +84,7 @@ const HomeStackScreen =({navigation}) =>(
           }
       }}>
         <HomeStack.Screen name="Home" component={HomeScreen} options={{
-          title: 'Overview',
+          title: 'My Classes',
           headerLeft: () => (
             <Icon.Button name="ios-menu" size={35} backgroundColor='#a8d7d7'
             onPress ={() =>navigation.openDrawer()}></Icon.Button>
@@ -87,9 +92,48 @@ const HomeStackScreen =({navigation}) =>(
         }} 
 
         />
+        <HomeStack.Screen 
+      name='Class'
+      component={ClassScreen}
+      // options={({route}) => ({
+      //   title: route.params.userName,
+      //   headerBackTitleVisible: false,
+      // })}
+    />
       </HomeStack.Navigator>
 
 ); 
+
+const MessageStackScreen =({navigation}) =>(
+  <MessageStack.Navigator screenOptions= {{
+        headerStyle: {
+            backgroundColor: '#a8d7d7'
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle :{
+            fontWeight: 'bold'
+          }
+      }}>
+        <MessageStack.Screen name="Inbox" component={MessageScreen}
+        options={{
+          title: 'Recent Messages',
+          headerLeft: () => (
+            <Icon.Button name="ios-menu" size={35} backgroundColor='#a8d7d7'
+            onPress ={() =>navigation.openDrawer()}></Icon.Button>
+          )
+        }} 
+ />
+      <MessageStack.Screen 
+      name="Chat"
+      component={ChatScreen}
+      options={({route}) => ({
+        title: route.params.userName,
+        headerBackTitleVisible: false,
+      })}
+    />
+      </MessageStack.Navigator>
+
+);
 
 const DetailsStackScreen =({navigation}) =>(
   <DetailsStack.Navigator screenOptions= {{
@@ -111,5 +155,28 @@ const DetailsStackScreen =({navigation}) =>(
         }} 
  />
       </DetailsStack.Navigator>
+
+);
+
+const ToDoStackScreen =({navigation}) =>(
+  <ToDoStack.Navigator screenOptions= {{
+        headerStyle: {
+            backgroundColor: '#a8d7d7'
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle :{
+            fontWeight: 'bold'
+          }
+      }}>
+        <ToDoStack.Screen name="To-Do" component={ToDoScreen}
+        options={{
+          title: 'To-Do-List',
+          headerLeft: () => (
+            <Icon.Button name="ios-menu" size={35} backgroundColor='#a8d7d7'
+            onPress ={() =>navigation.openDrawer()}></Icon.Button>
+          )
+        }} 
+ />
+      </ToDoStack.Navigator>
 
 );

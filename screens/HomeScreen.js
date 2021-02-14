@@ -19,7 +19,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.cardsWrapper}>
       <Text>ALL CLASSES</Text>
-       <View style = {styles.card}>
+       <TouchableOpacity style = {styles.card} onPress={() => navigation.navigate('Class')}>
           <View style = {styles.cardImgWrapper}>
             <Image source = {require('../assets/physics.jpg')} 
                    resizeMode ="cover" 
@@ -31,7 +31,7 @@ const HomeScreen = ({navigation}) => {
                   PHYSICS 
               </Text>
           </View>
-       </View>
+       </TouchableOpacity>
 
        <View style = {styles.card}>
           <View style = {styles.cardImgWrapper}>
