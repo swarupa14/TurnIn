@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -12,14 +13,34 @@ import ExploreScreen from "./ExploreScreen";
 import MessageScreen from "./MessageScreen";
 import ChatScreen from "./ChatScreen";
 import AssignScreen from "./AssignScreen";
+import { View } from "react-native-animatable";
+import { DrawerContent } from "./DrawerContent";
+import { NavigationContainer } from "@react-navigation/native";
+import { DrawerActions } from "@react-navigation/native";
+
+// import CardListScreen from "./CardListScreen";
+// import BookmarkScreen from "./BookmarkScreen";
+// import SettingsScreen from "./SettingsScreen";
+// import SupportScreen from "./SupportScreen";
+// import RootStackScreen from "./RootStackScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const MessageStack = createStackNavigator();
 const ToDoStack = createStackNavigator();
+// const Drawer = createDrawerNavigator();
 
 const MainTabScreen = () => (
+  // <NavigationContainer>
+  //   <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+  //     <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+  //     <Drawer.Screen name="SupportScreen" component={SupportScreen} />
+  //     <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
+  //     <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
+  //     <Drawer.Screen name="CardListScreen" component={CardListScreen} />
+  //   </Drawer.Navigator>
+
   <Tab.Navigator initialRouteName="Home" activeColor="#fff">
     <Tab.Screen
       name="Home"
@@ -70,6 +91,7 @@ const MainTabScreen = () => (
       }}
     />
   </Tab.Navigator>
+  // </NavigationContainer>
 );
 export default MainTabScreen;
 
